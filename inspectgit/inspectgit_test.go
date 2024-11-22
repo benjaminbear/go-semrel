@@ -6,11 +6,11 @@ import (
 	"testing"
 	"time"
 
-	"gopkg.in/src-d/go-billy.v4/memfs"
-	git "gopkg.in/src-d/go-git.v4"
-	"gopkg.in/src-d/go-git.v4/plumbing"
-	"gopkg.in/src-d/go-git.v4/plumbing/object"
-	"gopkg.in/src-d/go-git.v4/storage/memory"
+	"github.com/go-git/go-billy/v5/memfs"
+	git "github.com/go-git/go-git/v5"
+	"github.com/go-git/go-git/v5/plumbing"
+	"github.com/go-git/go-git/v5/plumbing/object"
+	"github.com/go-git/go-git/v5/storage/memory"
 )
 
 func setupRepo(t *testing.T) (*git.Repository, *git.Worktree) {
@@ -29,6 +29,7 @@ func setupRepo(t *testing.T) (*git.Repository, *git.Worktree) {
 func commit(t *testing.T, w *git.Worktree, msg string) plumbing.Hash {
 	t.Helper()
 	hash, err := w.Commit(msg, &git.CommitOptions{
+		AllowEmptyCommits: true,
 		Author: &object.Signature{
 			Name:  "a",
 			Email: "a@b",
@@ -43,6 +44,7 @@ func commit(t *testing.T, w *git.Worktree, msg string) plumbing.Hash {
 func merge(t *testing.T, w *git.Worktree, msg string, parents []plumbing.Hash) plumbing.Hash {
 	t.Helper()
 	hash, err := w.Commit(msg, &git.CommitOptions{
+		AllowEmptyCommits: true,
 		Author: &object.Signature{
 			Name:  "a",
 			Email: "a@b",
