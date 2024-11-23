@@ -3,17 +3,17 @@
 package inspectgit
 
 import (
+	"fmt"
 	"io"
 	"sort"
 	"strings"
 	"time"
 
+	"github.com/benjaminbear/go-semrel/semrel"
 	"github.com/blang/semver"
-	"github.com/juranki/go-semrel/semrel"
-	"github.com/pkg/errors"
-	git "gopkg.in/src-d/go-git.v4"
-	"gopkg.in/src-d/go-git.v4/plumbing"
-	"gopkg.in/src-d/go-git.v4/plumbing/object"
+	git "github.com/go-git/go-git/v5"
+	"github.com/go-git/go-git/v5/plumbing"
+	"github.com/go-git/go-git/v5/plumbing/object"
 )
 
 // VCSData returns current version and list of unreleased changes
@@ -58,7 +58,7 @@ func VCSDataWithPrefix(path string, prefix string) (*semrel.VCSData, error) {
 func getHeadTime(r *git.Repository) (*time.Time, error) {
 	h, err := r.Head()
 	if err != nil {
-		return nil, errors.Wrap(err, "get HEAD")
+		return nil, fmt.Errorf("get HEAD:%w", err)
 	}
 	hCommit, err := r.CommitObject(h.Hash())
 	if err != nil {
@@ -149,7 +149,7 @@ func getUnreleasedCommits(r *git.Repository, versions map[string]semver.Version)
 	}
 	h, err := r.Head()
 	if err != nil {
-		return nil, errors.Wrap(err, "get HEAD")
+		return nil, fmt.Errorf("get HEAD: %w", err)
 	}
 	hCommit, err := r.CommitObject(h.Hash())
 	if err != nil {
