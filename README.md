@@ -3,11 +3,12 @@
 **Automate releases** with [semantic versioning](https://semver.org/) and
 [AngularJS commit conventions](https://gist.github.com/stephenparish/9941e89d80e2bc58a153#format-of-the-commit-message)
 
-[![Build Status](https://travis-ci.org/juranki/go-semrel.svg?branch=master)](https://travis-ci.org/juranki/go-semrel)
-[![GoDoc](https://godoc.org/github.com/juranki/go-semrel?status.svg)](https://godoc.org/github.com/juranki/go-semrel)
+![Build status](https://img.shields.io/github/actions/workflow/status/benjaminbear/go-semrel/go.yml)
 
+![Go version](https://img.shields.io/github/go-mod/go-version/benjaminbear/go-semrel?filename=go.mod)
+![License](https://img.shields.io/github/license/benjaminbear/go-semrel)
 
-This library is used in [go-semrel-gitlab](https://juhani.gitlab.io/go-semrel-gitlab/)
+This library is used in [go-semrel-gitlab](https://github.com/benjaminbear/o-semrel-gitlab/)
 to
 
 - determine next version and 
