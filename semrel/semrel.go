@@ -6,7 +6,7 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/blang/semver"
+	"github.com/blang/semver/v4"
 )
 
 // BumpLevel of the release and/or individual commit

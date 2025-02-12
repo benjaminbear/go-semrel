@@ -6,7 +6,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/blang/semver"
+	"github.com/blang/semver/v4"
 )
 
 // implement Change interface for BumpLevel
